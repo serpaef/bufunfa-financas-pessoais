@@ -1,13 +1,17 @@
 import Dashboard from './Dashboard';
 import Goals from './Goals';
 import Transactions from './Transactions';
-import Config from './Config';
+import Accounts from './Accounts';
 import NotFound from './NotFound';
+import TransactionTypes from './TransactionTypes';
+import TransactionCategories from './TransactionCategories';
 
 export {
   Dashboard,
   Goals,
   Transactions,
-  Config,
-  NotFound
+  Accounts,
+  NotFound,
+  TransactionTypes,
+  TransactionCategories
 };

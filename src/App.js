@@ -1,7 +1,15 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
-import { Dashboard, Transactions, Config, Goals, NotFound } from './pages';
+import {
+  Dashboard,
+  Transactions,
+  Accounts,
+  Goals,
+  NotFound,
+  TransactionTypes,
+  TransactionCategories,
+} from './pages';
 
 function App() {
   return (
@@ -11,7 +19,12 @@ function App() {
         <Routes>
           <Route path='/transactions' element={<Transactions />} />
           <Route path='/goals' element={<Goals />} />
-          <Route path='/config' element={<Config />} />
+          <Route path='/accounts' element={<Accounts />} />
+          <Route path='/transaction_types' element={<TransactionTypes />} />
+          <Route
+            path='/transaction_categories'
+            element={<TransactionCategories />}
+          />
           <Route path='/' element={<Dashboard />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
