@@ -1,9 +1,6 @@
 import React from 'react';
 import { Row, Col, Container, Card } from 'react-bootstrap';
-import ExpensesByCategory from '../components/ExpensesByCategory';
-import Goals from '../components/Goals';
-import Overview from '../components/Overview';
-import Accounts from '../components/Accounts';
+import { ExpensesByCategory, Goals, Overview, Accounts } from '../components';
 
 export default function Dashboard() {
   return (
