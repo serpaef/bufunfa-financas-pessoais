@@ -7,12 +7,21 @@ import { Link } from 'react-router-dom';
 
 export default function Header() {
   return (
-    <Navbar variant='dark' bg='dark' expand='lg'>
+    <Navbar
+      variant='dark'
+      bg='dark'
+      expand='lg'
+      style={{ marginBottom: '0.5rem' }}
+    >
       <Container>
         <Navbar.Brand>
           R$ 10.000,00
           <Form.Select
-            style={{ display: 'inline-block', maxWidth: '120px', margin: '0 10px' }}
+            style={{
+              display: 'inline-block',
+              maxWidth: '120px',
+              margin: '0 10px',
+            }}
           >
             <option>Conta 1</option>
             <option>Conta 2</option>
