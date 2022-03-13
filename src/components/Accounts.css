@@ -1,0 +1,25 @@
+.account-in {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.account-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.account-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #aaa ;
+  font-size: medium;
+  margin-bottom: 8px;
+}
+
+.account-item:last-child {
+  border-bottom: none;
+}
