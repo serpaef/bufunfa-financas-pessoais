@@ -1,0 +1,29 @@
+.goal-in {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.goal-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.goal-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #aaa ;
+  font-size: medium;
+  margin-bottom: 8px;
+}
+
+.goal-item:last-child {
+  border-bottom: 0px;
+}
+
+.progress-bar-span {
+  width: 50%;
+}
