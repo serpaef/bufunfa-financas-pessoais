@@ -1,5 +1,6 @@
 import React from 'react';
 import { Row, Col, Container, Card } from 'react-bootstrap';
+import Overview from '../components/Overview';
 
 export default function Dashboard() {
   return (
@@ -15,11 +16,7 @@ export default function Dashboard() {
             <Card border='secondary' style={{ minHeight: '35vh' }}>
               <Card.Header>Visão Geral</Card.Header>
               <Card.Body>
-                <Card.Title>Secondary Card Title</Card.Title>
-                <Card.Text>
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </Card.Text>
+                <Overview />
               </Card.Body>
             </Card>
           </Col>
