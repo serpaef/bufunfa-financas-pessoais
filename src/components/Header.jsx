@@ -41,7 +41,7 @@ export default function Header() {
             <Nav.Link as={Link} to='/goals'>
               Metas
             </Nav.Link>
-            <NavDropdown title='Configurações' id='basic-nav-dropdown'>
+            <NavDropdown title='Detalhes' id='basic-nav-dropdown'>
               <NavDropdown.Item as={Link} to='/accounts'>
                 Contas
               </NavDropdown.Item>
