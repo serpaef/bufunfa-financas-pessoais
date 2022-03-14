@@ -5,7 +5,7 @@ export const headers = {
 }
 
 const api = axios.create({
-  baseURL: 'localhost:3002',
+  baseURL: 'http://localhost:3002',
 });
 
 export default api;
