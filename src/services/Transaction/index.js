@@ -1,3 +1,5 @@
 import getAll from './getAll';
 
-export { getAll };
+const Transaction = { getAll };
+
+export default Transaction;
