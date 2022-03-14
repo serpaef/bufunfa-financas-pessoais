@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
@@ -5,7 +6,14 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
 
+import { useAccounts } from '../context/Context';
+
 export default function Header() {
+  const [balance, setBalance] = useState(0)
+  const { accounts } = useAccounts();
+
+  useEffect(() => {setBalance(+accounts[0].balance)}, [accounts])
+
   return (
     <Navbar
       variant='dark'
@@ -15,18 +23,19 @@ export default function Header() {
     >
       <Container>
         <Navbar.Brand>
-          R$ 10.000,00
+          { balance.toFixed(2) }
           <Form.Select
             style={{
               display: 'inline-block',
               maxWidth: '120px',
               margin: '0 10px',
             }}
+            value={ balance }
+            onChange={(e) => setBalance(+e.target.value)}
           >
-            <option>Conta 1</option>
-            <option>Conta 2</option>
-            <option>Conta 3</option>
-            <option>Conta 4</option>
+            {!Array.isArray(accounts) ? '' : accounts.map((account, index) => {
+              return (<option key={index} value={account.balance}>{account.name}</option>)
+            })}
           </Form.Select>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
