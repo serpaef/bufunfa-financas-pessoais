@@ -27,7 +27,7 @@ export default function Header() {
     >
       <Container>
         <Navbar.Brand>
-          {balance.toFixed(2)}
+          R${balance.toFixed(2)}
           <Form.Select
             style={{
               display: 'inline-block',
