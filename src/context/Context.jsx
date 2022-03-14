@@ -1,7 +1,23 @@
-import React, { createContext } from 'react';
+import React, { createContext, useState, useEffect, useContext } from 'react';
+import Account from '../services/Account';
 
-export const Store = createContext();
+const Store = createContext();
 
 export default function Context({ children }) {
-  return <Store.Provider>{children}</Store.Provider>;
+  const [accounts, setAccounts] = useState([]);
+
+  useEffect(()=> {
+    async function populate() {
+      const apiAccounts = await Account.getAll();
+      setAccounts(apiAccounts);
+    }
+    populate();
+  }, [])
+
+  return <Store.Provider value={{accounts}}>{children}</Store.Provider>;
+}
+
+export function useAccounts() {
+  const accounts = useContext(Store)
+  return accounts;  
 }
