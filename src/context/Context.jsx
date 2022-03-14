@@ -6,13 +6,16 @@ const Store = createContext();
 export default function Context({ children }) {
   const [accounts, setAccounts] = useState([]);
 
+  async function populate() {
+    const apiAccounts = await Account.getAll();
+    setAccounts(apiAccounts);
+  }
+  
   useEffect(()=> {
-    async function populate() {
-      const apiAccounts = await Account.getAll();
-      setAccounts(apiAccounts);
-    }
     populate();
   }, [])
+
+  useEffect(()=>{}, [accounts])
 
   return <Store.Provider value={{accounts}}>{children}</Store.Provider>;
 }
