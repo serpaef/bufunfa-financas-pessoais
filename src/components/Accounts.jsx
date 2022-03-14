@@ -1,30 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Accounts.css';
 
+import { useAccounts } from '../context/Context';
+
 export default function Accounts() {
+  const { accounts } = useAccounts();
+
+  useEffect(() => {}, [accounts]);
+
   return (
     <div className='account-in'>
       <ul className='account-list'>
-        <li className='account-item'>
-          <span>Conta 1</span>
-          <span>R$48,00</span>
-        </li>
-        <li className='account-item'>
-          <span>Conta 2</span>
-          <span>R$100,00</span>
-        </li>
-        <li className='account-item'>
-          <span>Conta 3</span>
-          <span>R$52,00</span>
-        </li>
-        <li className='account-item'>
-          <span>Conta 2</span>
-          <span>R$100,00</span>
-        </li>
-        <li className='account-item'>
-          <span>Conta 3</span>
-          <span>R$52,00</span>
-        </li>
+        {!accounts.length > 0
+          ? ''
+          : accounts.map((account, index) => {
+              return (
+                <li className='account-item' key={index}>
+                  <span>{account.name}</span>
+                  <span>{`R$${account.balance.toFixed(2)}`}</span>
+                </li>
+              );
+            })}
       </ul>
     </div>
   );
