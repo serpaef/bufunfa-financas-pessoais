@@ -10,17 +10,21 @@ export default function Context({ children }) {
     const apiAccounts = await Account.getAll();
     setAccounts(apiAccounts);
   }
-  
-  useEffect(()=> {
+
+  useEffect(() => {
     populate();
-  }, [])
+  }, []);
 
-  useEffect(()=>{}, [accounts])
+  useEffect(() => {}, [accounts]);
 
-  return <Store.Provider value={{accounts}}>{children}</Store.Provider>;
+  return (
+    <Store.Provider value={{ accounts }}>
+      {children}
+    </Store.Provider>
+  );
 }
 
 export function useAccounts() {
-  const accounts = useContext(Store)
-  return accounts;  
+  const { accounts } = useContext(Store);
+  return { accounts };
 }
