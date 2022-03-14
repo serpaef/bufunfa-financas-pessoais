@@ -9,10 +9,14 @@ import { Link } from 'react-router-dom';
 import { useAccounts } from '../context/Context';
 
 export default function Header() {
-  const [balance, setBalance] = useState(0)
+  const [balance, setBalance] = useState(0);
   const { accounts } = useAccounts();
 
-  useEffect(() => {setBalance(+accounts[0].balance)}, [accounts])
+  useEffect(() => {
+    if (accounts.length > 0) {
+      setBalance(+accounts[0].balance);
+    }
+  }, [accounts]);
 
   return (
     <Navbar
@@ -23,19 +27,27 @@ export default function Header() {
     >
       <Container>
         <Navbar.Brand>
-          { balance.toFixed(2) }
+          {balance.toFixed(2)}
           <Form.Select
             style={{
               display: 'inline-block',
               maxWidth: '120px',
               margin: '0 10px',
             }}
-            value={ balance }
+            value={balance}
             onChange={(e) => setBalance(+e.target.value)}
           >
-            {!Array.isArray(accounts) ? '' : accounts.map((account, index) => {
-              return (<option key={index} value={account.balance}>{account.name}</option>)
-            })}
+            {!accounts.length > 0
+              ? ''
+              : accounts.map((account, index) => {
+                  return (
+                    <option key={index} value={account.balance}>
+                      {account.name}
+                    </option>
+                  );
+                })
+            }
+            <option value={51}>teste</option>
           </Form.Select>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
