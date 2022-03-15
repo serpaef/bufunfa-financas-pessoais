@@ -1,23 +1,35 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './ExpensesByCategory.css';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Doughnut } from 'react-chartjs-2';
 
+import { useTransactions, useCategories } from '../context/Context';
+
+import { Doughnut } from 'react-chartjs-2';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
+const EXPENSE = 2;
+
 export default function ExpensesByCategory() {
+  const { transactions } = useTransactions();
+  const { categories } = useCategories();
+
+  useEffect(() => {}, [transactions, categories]);
+
+  const labels = categories.map((category) => category.name);
+  let values = [0,0,0,0,0];
+
+  transactions.forEach( transaction => {
+    if(transaction.typeId === EXPENSE) {
+      values[+transaction.category.id - 1] += transaction.value
+    }
+  });
+
   const data = {
-    labels: [
-      'Essenciais',
-      'Transporte',
-      'Lazer',
-      'Educação',
-      'Outros',
-    ],
+    labels,
     datasets: [
       {
         label: 'Valor em R$',
-        data: [100, 55, 83.3, 70, 22],
+        data: values,
         backgroundColor: [
           'rgba(255, 99, 132, 1)',
           'rgba(54, 162, 235, 1)',
@@ -26,7 +38,7 @@ export default function ExpensesByCategory() {
           'rgba(153, 102, 255, 1)',
           'rgba(255, 159, 64, 1)',
           'rgba(200, 200, 64, 1)',
-        ]
+        ],
       },
     ],
   };
@@ -35,9 +47,9 @@ export default function ExpensesByCategory() {
     maintainAspectRatio: false,
     plugins: {
       legend: {
-        position: 'right'
-      }
-    }
+        position: 'right',
+      },
+    },
   };
 
   return (
