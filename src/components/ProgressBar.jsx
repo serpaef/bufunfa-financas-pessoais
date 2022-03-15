@@ -1,17 +1,17 @@
 import React from 'react'
 import { ProgressBar as Bar } from 'react-bootstrap';
 
-export default function ProgressBar() {
+export default function ProgressBar({ reached, total }) {
   //TODO receive it as props
-  const goal = 10000;
-  const achieved = 4650.63;
+  const goal = total;
+  const achieved = reached;
 
-  const now = achieved / goal * 100;
-  
+  const now = achieved > goal ? 100 : achieved / goal * 100;
+
   return (
     <Bar>
-      <Bar striped now={ now } label={`R$${achieved.toFixed(2)} / R$${goal.toFixed(2)}`} key={1} />
-      <Bar striped variant='info' now={ 100 - now } key={2}/>
+      <Bar striped now={ now } key={1} label={`R$${achieved.toFixed(2)} / R$${goal.toFixed(2)}`} />
+      <Bar striped variant='info' now={ now === 100 ? 0 : 100 - now } key={2}/>
     </Bar>
   )
 }
